@@ -1,0 +1,33 @@
+<h1>Users List</h1>
+
+<table border="1">
+<thead>
+<tr>
+    <td colspan="5" align="right"></td>
+</tr>
+    <tr>
+    
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Edit </th>
+           
+    </tr>
+</thead>
+<tbody>
+
+<?php
+        foreach ($User as $User) {
+    	    echo "<tr>";
+    	    $a= $User->Id;
+    		echo "<td>" . $User->firstname  . "</td>";
+    		echo "<td>" . $User->lastname  . "</td>";
+    		echo "<td>" . $User->email. "</td>";
+            echo "<td>"."<a href= /user/edit/".$a.">update</a>"."</td>";
+			echo "</tr>";
+		}
+?>
+    
+</tbody>
+</table>
+</div>

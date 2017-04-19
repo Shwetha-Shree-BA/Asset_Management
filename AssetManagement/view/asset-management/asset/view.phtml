@@ -1,0 +1,38 @@
+<h1>Assets List</h1>
+
+
+<table border="1">
+   	 <thead>
+        <tr>
+        	
+            <td colspan="5" align="right"></td>
+		</tr>
+        <tr>
+            <th>AssetId</th>
+            <th>AssetName</th>
+            <th>AssetStatus</th>
+            <th>AssetDesc</th>
+            <th>AssetType</th>
+        </tr>
+      </thead>
+       <tbody>
+    
+    <?php
+
+    foreach ($this->asset as $asset) {
+         
+         echo "<tr>";
+
+                echo "<td>" .$asset['AssetId'] . "</td>";
+                echo "<td>" .$asset['AssetName']  . "</td>";
+                echo "<td>" .$asset['AssetStatus']  . "</td>";
+                echo "<td>" .$asset['AssetDesc']  . "</td>";
+                echo "<td>" .$asset['AssetType']. "</td>";
+        
+        echo "</tr>";
+
+}
+		
+	?>
+	</tbody>
+</table>

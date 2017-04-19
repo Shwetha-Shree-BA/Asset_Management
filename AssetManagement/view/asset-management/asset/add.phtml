@@ -1,0 +1,93 @@
+<?php
+//Getting form Object from add action of student controller.
+$form =$this->form;
+
+//setting the value for action attribute.
+$form->setAttribute('action', $this->url('home1',array('action' => 'add')));
+
+// Ensures state is ready for use
+$form->prepare();
+
+// Opening the form tag
+echo $this->form()->openTag($form);
+
+?>
+<script src="/js/index.js" type="text/javascript"> </script>
+<div style = "width:400px; border: solid 1px #333333; " align = "left">
+                <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Add Assets</b></div>
+				        <div style = "margin:30px" id="Asset">
+						
+						<p id= "demo"></p>							
+							
+							<div align ="center">
+
+							<?php							
+							// Hidden Element to store id
+							echo $this->formHidden($form->get('AssetId'));
+							?>
+							
+							<div>
+							<label>AssetName:           </label>
+							<?php 
+							// TextBox element to input Name of Asset.
+							echo $this->formRow($form->get('AssetName')); ?>
+							</div>
+							
+							<div>
+							<lable><b>AssetType:     </b></lable>
+ 							<?php
+							// TextBox element to Select Type of Asset.
+							echo $this->formRow($form->get('AssetType'));
+							?>
+							</div>
+							
+							<div>
+ 							<lable><b>AssetDesc:     </b></lable>
+ 							<?php
+							// TextBox element to input AssetDesc of Asset.
+							echo $this->formRow($form->get('AssetDesc'));
+							?>
+							</div>
+							
+							<div> 
+							<lable> <b>AssetStatus:  </b></lable>
+							<?php
+							// TextBox element to input status of Asset.
+							echo $this->formRow($form->get('AssetStatus'));
+							?>
+							</div>
+
+
+							<div> 
+							<lable> <b>slno:         </b></lable>
+							<?php
+							// TextBox element to input status of Asset.
+							echo $this->formRow($form->get('slno'));
+							?>
+							</div>
+
+
+							<div> 
+							
+							<?php
+							// TextBox element to input status of Asset.
+							echo $this->formRow($form->get('testableDevice'));
+							?>
+							</div>
+							
+							<div>
+							<?php
+							// Submit button
+							echo $this->formSubmit($form->get('submit'));
+							?>
+							</div> 
+ 							</div>
+							
+                			</div>
+			
+							</div>	
+
+<?php
+// Closing the form tag
+echo $this->form()->closeTag();
+ ?>						

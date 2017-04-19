@@ -1,0 +1,104 @@
+<?php
+
+$title = 'Edit album';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title);?></h1>
+<?php
+$form = $this->form;
+$form->prepare();
+$form->setAttribute('action',$this->url('edit',
+	array(
+		'id'=> $this->id,
+		)
+	));
+
+
+echo $this->form()->openTag($form);
+?>
+  
+
+<div style = "width:400px; border: solid 1px #333333; " align = "left">
+                <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Assets</b></div>
+				        <div style = "margin:30px" id="Asset">
+							
+							
+							<div align ="center">
+
+							<?php							
+							// Hidden Element to store id
+							echo $this->formHidden($form->get('AssetId'));
+							?>
+							<div>
+							<label>AssetName :</label>
+							<?php 
+							// TextBox element to input Name of Asset.
+							echo $this->formRow($form->get('AssetName')); ?>
+							</div>
+
+
+
+							<div>
+							<lable><b>AssetType: </b></lable>
+ 							<?php
+							// TextBox element to input Type of Asset.
+							echo $this->formRow($form->get('AssetType'));
+							?>
+							</div>
+
+
+
+ 							<div>
+ 							<lable><b>AssetDesc: </b></lable>
+ 							<?php
+							// TextBox element to input AssetDesc of Asset.
+							echo $this->formRow($form->get('AssetDesc'));
+							?>
+							</div>
+
+
+							<div> 
+							<lable> <b>Asset Status: </b></lable>
+							<?php
+							// TextBox element to input status of Asset.
+							echo $this->formRow($form->get('AssetStatus'));
+							?>
+							</div>
+
+
+
+							<div> 
+							<lable> <b>slno: </b></lable>
+							<?php
+							// TextBox element to input status of Asset.
+							echo $this->formRow($form->get('slno'));
+							?>
+							</div>
+
+
+							<div> 
+							
+							<?php
+							// TextBox element to input status of Asset.
+							echo $this->formRow($form->get('testableDevice'));
+							?>
+							</div>
+
+							
+							<div>
+							<?php
+							// Submit button
+							echo $this->formSubmit($form->get('submit'));
+							?>
+							</div> 
+ 							</div>
+							
+							<?php
+							// Closing the form tag
+							echo $this->form()->closeTag();
+                             ?>
+
+			
+		                
+                    </div>
+			    </div>							

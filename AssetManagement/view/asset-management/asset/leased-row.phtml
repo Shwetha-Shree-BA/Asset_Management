@@ -1,0 +1,38 @@
+<h1>Leased  List</h1>
+<table border="1">
+<thead>
+<tr>
+
+<td colspan="6" align="right"></td>
+</tr>
+        
+<tr>
+            
+    <th>requestedTime</th>
+    <th>returnedTime</th>
+    <th>firstName</th>
+    <th>Email</th>
+    <th>AssetName</th>
+    <th>Edit</th>
+            
+</tr>
+</thead>
+<tbody>
+    
+<?php
+
+    foreach ($this->lrow as $lrow) {
+        echo "<tr>";
+        $a= $lrow['userId'];
+        echo "<td>" .$lrow['requestedTime'] . "</td>";
+        echo "<td>" .$lrow['returnedTime'] . "</td>";
+        echo "<td>" .$lrow['firstname'] . "</td>";
+        echo "<td>" .$lrow['email'] . "</td>";
+        echo "<td>" .$lrow['AssetName'] . "</td>";
+        echo "<td>"."<a href='/asset/updateReturnTime/".$a."'>Edit</a>"."</td>";
+        echo "</tr>";    
+    }
+?>
+
+</tbody>
+</table>

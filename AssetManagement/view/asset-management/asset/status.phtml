@@ -1,0 +1,103 @@
+<?php
+
+$title = 'Edit Asset Status';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title);?></h1>
+<?php
+$form = $this->form;
+$form->prepare();
+$form->setAttribute('action',$this->url('updateStatus',
+	array(
+		'id'=> $this->id,
+		)
+	));
+
+
+echo $this->form()->openTag($form);
+?>
+  
+<div align ="left">
+<div style = "width:300px; border: solid 1px #333333; " align = "left">
+                <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Assets</b></div>
+				        <div style = "margin:30px" id="Asset">
+							
+							
+							
+
+							<?php							
+							// Hidden Element to store id
+							echo $this->formHidden($form->get('AssetId'));
+							?>
+							<div>
+							
+							<?php 
+							// TextBox element to input Name of Asset.
+							echo $this->formHidden($form->get('AssetName')); ?>
+							</div>
+
+
+
+							<div>
+							
+ 							<?php
+							// TextBox element to input Type of Asset.
+							echo $this->formHidden($form->get('AssetType'));
+							?>
+							</div>
+
+
+
+ 							<div>
+ 							
+ 							<?php
+							// TextBox element to input AssetDesc of Asset.
+							echo $this->formHidden($form->get('AssetDesc'));
+							?>
+							</div>
+
+
+							<div> 
+							<lable> <b>Asset Status: </b></lable>
+							<?php
+							// TextBox element to input status of Asset.
+							echo $this->formRow($form->get('AssetStatus'));
+							?>
+							</div>
+
+
+
+							<div> 
+							
+							<?php
+							// TextBox element to input status of Asset.
+							echo $this->formHidden($form->get('slno'));
+							?>
+							</div>
+
+
+							<div> 
+							
+							<?php
+							// TextBox element to input status of Asset.
+							echo $this->formHidden($form->get('testableDevice'));
+							?>
+							</div>
+
+							
+							<div>
+							<?php
+							// Submit button
+							echo $this->formSubmit($form->get('submit'));
+							?>
+							</div> 
+ 							</div>
+						</div>
+			    	</div>
+
+<?php
+// Closing the form tag
+echo $this->form()->closeTag();
+                             
+?>
+							

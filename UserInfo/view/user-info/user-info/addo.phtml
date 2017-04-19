@@ -1,0 +1,94 @@
+<?php
+//Getting form Object from add action of student controller.
+$form =$this->form;
+
+//setting the value for action attribute.
+$form->setAttribute('action', $this->url('register',array('action' => 'addo')));
+
+// Ensures state is ready for use
+$form->prepare();
+
+// Opening the form tag
+echo $this->form()->openTag($form);
+
+?>
+<div style = "width:400px; border: solid 1px #333333; " align = "left">
+                <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Users</b></div>
+				        <div style = "margin:30px" id="Users">
+						
+						<p id= "demo"></p>							
+							
+							<div align ="center">
+
+							<?php							
+							// Hidden Element to store id
+							echo $this->formHidden($form->get('Id'));
+							?>
+							<div>
+							<label>firstname: </label>
+							<?php 
+							// TextBox element to input Name of Asset.
+							echo $this->formRow($form->get('firstname')); ?>
+							</div>
+							<div>
+							<lable><b>lastname: </b></lable>
+ 							<?php
+							// TextBox element to input Type of Asset.
+							echo $this->formRow($form->get('lastname'));
+							?>
+							</div>
+
+							<div>
+ 							<lable><b>email: </b></lable>
+ 							<?php
+							// TextBox element to input AssetDesc of Asset.
+							echo $this->formRow($form->get('email'));
+							?>
+							
+							<div>
+ 							<lable><b>password: </b></lable>
+ 							<?php
+							// TextBox element to input AssetDesc of Asset.
+							echo $this->formRow($form->get('password'));
+							?>
+							</div>
+							<div> 
+							<lable><b>Gender: </b></lable>
+							<?php
+							// TextBox element to input status of Asset.
+							echo $this->formRow($form->get('gender'));
+							?>
+							</div>
+							<div> 
+							
+							<?php
+							// TextBox element to input status of Asset.
+						echo $this->formRow($form->get('isleasedout'));
+							?>
+							</div>
+
+							<div> 
+							
+							<?php
+							// TextBox element to input status of Asset.
+						echo $this->formRow($form->get('roleid'));
+							?>
+							</div>
+
+
+							<div>
+							<?php
+							// Submit button
+							echo $this->formSubmit($form->get('submit'));
+							?>
+							</div> 
+ 							</div>
+							
+                			</div>
+			
+							</div>	
+
+<?php
+// Closing the form tag
+echo $this->form()->closeTag();
+ ?>						

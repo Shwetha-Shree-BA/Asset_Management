@@ -1,0 +1,54 @@
+<?php
+    $form =$this->form;
+	$form->
+	setAttribute('action', $this->url('login',array('action' => 'index')));
+	$form->prepare();
+	echo $this->form()->openTag($form);
+?>
+<div align ="center">
+<div style = "width:300px; border: solid 1px #333333; " align = "left">
+                <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>login</b></div>
+				        <div style = "margin:30px" id="login">
+							<div>
+							<label>EmailID: </label>
+							<?php 
+							// TextBox element to input Name of Asset.
+							echo $this->formRow($form->get('email')); ?>
+							</div>
+							
+							<div>
+							<label>password: </label>
+							<?php 
+							// TextBox element to input Name of Asset.
+							echo $this->formRow($form->get('password')); ?>
+							</div>
+
+							<div> 
+							<?php
+							// TextBox element to input status of Asset.
+							echo $this->formRow($form->get('rememberme'));
+							?>
+							</div>
+							
+							<div>
+							<?php
+							// Submit button
+							echo $this->formSubmit($form->get('submit'));
+							?>
+							</div> 
+
+							</div>
+							</div>
+							</div>
+<?php
+// Closing the form tag
+echo $this->form()->closeTag();
+?>						
+
+
+
+
+
+
+
+

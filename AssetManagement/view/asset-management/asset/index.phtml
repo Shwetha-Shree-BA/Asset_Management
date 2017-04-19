@@ -1,0 +1,65 @@
+<h1>Assets List</h1>
+<script>
+            
+            $(document).ready(function(){
+                $("#abcc a").click(function(){
+                var regid=$("#delete1").attr('val');
+                $.ajax({
+                    url  : '/asset/delete',
+                    data : { AssetId: regid },
+                    type : 'POST' ,
+                    success : function( output ) {
+                        $("#deleteduser").html(output);
+                    });
+            	});
+        	});          
+
+</script>
+<table border="1">
+   	 <thead>
+     
+        <tr>
+            <td colspan="6" align="right" height="10" width="20">
+             
+            </td>
+        </tr>
+        <tr>
+            
+            <th>AssetName</th>
+            <th>AssetStatus</th>
+            <th>AssetDesc</th>
+            <th>AssetType</th>
+            <th>Delete </th>
+            <th>Edit </th>
+        </tr>
+      </thead>
+    <tbody>
+    
+    <?php
+
+	    
+
+    	foreach ($Asset as $Asset) {
+
+            
+    		
+            echo "<tr>";
+
+                $a= $Asset['AssetId'];
+                
+             
+                echo "<td>" .$Asset['AssetName']  . "</td>";
+                echo "<td>" .$Asset['AssetStatus']  . "</td>";
+                echo "<td>" .$Asset['AssetDesc'] . "</td>";
+                echo "<td>" .$Asset['AssetType']. "</td>";
+    			echo "<td>"."<a href='/asset/update/".$a."'>update</a>"."</td>";
+    		 	echo "<td>"."<span id='abcc'> <a href='#' id='delete1' 
+    			val='".$a."'>delete</a></span>"."</td>";
+    		
+            echo "</tr>";
+		}
+    ?>
+	
+</tbody>
+</table>
+

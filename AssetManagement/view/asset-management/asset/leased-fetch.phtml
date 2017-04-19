@@ -1,0 +1,45 @@
+<h1>LeasedUser List</h1>
+
+<table border="1">
+   	 <thead>
+        <tr>
+        	
+            <td colspan="11" align="right"></td>
+		</tr>
+        <tr>
+          
+            <th>requestedTime</th>
+            <th>returnedTime</th>
+            <th>email</th>
+            <th>firstname</th>
+            <th>AssetName </th>
+            <th>AssetDesc</th>
+            <th>AssetStatus</th>
+            <th>Update Status</th>
+        </tr>
+      </thead>
+       <tbody>
+    
+<?php
+
+    foreach ($this->data as $Leased) {
+    	 
+    	echo "<tr>";
+    	 $a= $Leased['assetId'];
+
+    
+    		 	echo "<td>" .$Leased['requestedTime']  . "</td>";
+    		 	echo "<td>" .$Leased['returnedTime']  . "</td>";
+    		 	echo "<td>" .$Leased['email']. "</td>";
+    		 	echo "<td>" .$Leased['firstname'] . "</td>";
+    		 	echo "<td>" .$Leased['AssetName']. "</td>";
+    		 	echo "<td>" .$Leased['AssetDesc']. "</td>";
+    		 	echo "<td>" .$Leased['AssetStatus']. "</td>";
+
+				echo "<td>"."<a href='/asset/updateAssetStatus/".$a."'>update status</a>"."</td>";
+    	echo "</tr>";
+} 
+?>
+
+</tbody>
+</table>

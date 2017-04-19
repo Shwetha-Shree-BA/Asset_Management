@@ -1,0 +1,91 @@
+<?php
+
+//Getting form Object from add action of student controller.
+$form =$this->form;
+$id= $this->id;
+
+
+$form->setAttribute('action',$this->url('leasedStatus',
+    array(
+        'id'=> $id,
+        )));
+
+
+
+// Ensures state is ready for use
+$form->prepare();
+
+// Opening the form tag
+echo $this->form()->openTag($form);
+
+?>
+
+
+
+<div align ="center">
+<div style = "width:400px; border: solid 1px #333333; " align = "left">
+                <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Update ReturnTime</b></div>
+                        <div style = "margin:30px" id="leasedUSer">
+
+
+
+                        <?php                           
+                            // Hidden Element to store id
+                            echo $this->formHidden($form->get('Id'));
+                         ?>
+
+
+                        <div>
+
+                            <label>requestedTime: </label>
+                            <?php 
+                            // TextBox element to input Name of Asset.
+                            echo $this->formRow($form->get('requestedTime')); ?>
+                        </div>
+
+
+
+                        <div>
+                             <label>returnedTime: </label>
+                            <?php 
+                            // TextBox element to input Name of Asset.
+                            echo $this->formRow($form->get('returnedTime')); 
+                            ?>
+                        </div>
+
+
+                        <div>
+                            <label>AssetId: </label>
+                            <?php 
+                            // TextBox element to input Name of Asset.
+                            echo $this->formRow($form->get('assetId')); 
+                            ?>
+                        </div>
+
+
+
+                         <div>
+                             <label>UserId: </label>
+                            <?php 
+                            // TextBox element to input Name of Asset.
+                            echo $this->formRow($form->get('userId')); 
+                            ?>
+                        </div>
+
+
+
+                        <div>
+                            <?php
+                            // Submit button
+                            echo $this->formSubmit($form->get('submit'));
+                            ?>
+                        </div> 
+
+                    </div>
+                </div>
+            </div>
+
+<?php
+
+echo $this->form()->closeTag();
+ ?>                     
