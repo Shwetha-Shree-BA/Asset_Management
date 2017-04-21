@@ -32,11 +32,15 @@ class UserInfoTable {
     public function getUser($id) {
         
         $id  = (int) $id;
+
+       
         $sqlSelect = $this->tableGateway->getSql()->select();
         $sqlSelect->columns(array('firstname','lastname','email',       
             'gender','roleid'));
         $sqlSelect->join('userhasassetsTable', 'userhasassetsTable.userId = UserInfoTable.Id', array('AssetId'));
         $sqlSelect->where(array( 'UserInfoTable.Id' => $id));
+       // $sqlSelect->$where->OR(array( 'UserInfoTable.Id'=> $id ));
+
         $statement = $this->tableGateway->getSql()->prepareStatementForSqlObject($sqlSelect);
         $resultSet = $statement->execute();
        /* foreach ($resultSet as $key => $value) {
@@ -76,6 +80,16 @@ class UserInfoTable {
         );
         $this->tableGateway->insert($data);
 
+    }
+    /**
+    *Getting the user Information by the id
+    *
+    *@param $id
+    */
+    public function getUserRowById($id) {
+        $rowset = $this->tableGateway->select(array('Id' => $id));
+        $row = $rowset->current();
+        return $row;
     }
     /**
     *Getting the user Information by the Email ID

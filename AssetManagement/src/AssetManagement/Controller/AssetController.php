@@ -18,6 +18,8 @@ use AssetManagement\Form\leasedForm;
 use AssetManagement\Model\leased;
 use AssetManagement\Model\leasedoutuserTable;
 use AssetManagement\Model\AssetType;
+use DateTime;
+use DateTimeZone;
 
 class AssetController extends AbstractActionController {
       protected $AssetInfoTable;
@@ -106,6 +108,7 @@ class AssetController extends AbstractActionController {
     */ 
     public function indexAction() {
         //getting the userInformation by the Email.
+        $datetime = new DateTime(null, new DateTimeZone('America/Chicago')); 
         $userInfoObj = $this->getUserInfoTable();
         $auth = new AuthenticationService();
         $userInfo 
@@ -113,11 +116,12 @@ class AssetController extends AbstractActionController {
         $resultSet = $this->getAssetInfoTable()->fetchAll();
         if ($userInfo->roleid == 1) {
             return new ViewModel(array(
-            'Asset'=>$this->getAssetInfoTable()->fetchAll() ));
+            'Asset'=>$this->getAssetInfoTable()->fetchAll() ,
+            'datetime'=>$datetime));
         } else {
             echo "As you are not the Admin , you can't asses it Directly...";exit();
         }
-}
+    }
     
     /**
     * Getting Asset Information for the normal User's:-
@@ -218,35 +222,30 @@ class AssetController extends AbstractActionController {
         } else {
              echo "As you are not admin , you can't access Directly";exit();
         }
-
     }
-
-     /**
+    /**
     *fetching Single Row of the LeasedUser based on Id:-
     *
     * @return   ViewModel object 
     * 
-    
     */ 
     public function leasedRowAction() {
         $id = (int) $this->params()->fromRoute('id',0);
         $lrow = $this->getleasedoutuserTable()->getLeasedRow($id);
         return new viewModel(array('lrow' => $lrow));
     }  
-     /**
+    /**
     *Changing the Return Time By the Leased out User:-
     *
     * @return   ViewModel object 
     * 
-    
     */ 
     public function leasedStatusAction() {
         $id = (int) $this->params()->fromRoute('id',0); 
         $assetObj = $this->getAssetInfoTable()->fetchName();
         foreach ($assetObj as $key => $value) {
             $opt[$value->AssetId]= $value->AssetName;
-
-       }
+        }
 
         $form = new leasedForm('',$opt,$id);
         $formdata= $this->getleasedoutuserTable()-> getRowOfLeasedUser($id);
@@ -331,9 +330,7 @@ class AssetController extends AbstractActionController {
             )
           );
     }
-
-
-     /**
+    /**
     * Inserting the Asset Content into DAtabase:-.
     * @return   form  Object.
     * 

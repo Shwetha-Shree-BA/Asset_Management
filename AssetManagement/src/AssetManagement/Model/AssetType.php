@@ -2,7 +2,6 @@
 /*
 *  Class Objective:- is to fetch all AssetType Information.
 */
-
 namespace AssetManagement\Model;
 use Zend\Db\TableGateway\TableGateway;
 

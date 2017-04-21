@@ -127,15 +127,26 @@ class UserInfoController extends AbstractActionController {
         $count= -1;
         $form = new UserForm('',$options,$opt);
         $formdata= $this->getUserInfoTable()->getUser($id);
+
         foreach ($formdata as $key => $value) {
+          
           $currentData[$key] = $value;
           $count= $count+1;
 
         }
+        
+        if(empty($currentData)) {
+
+            $formdata = $this->getUserInfoTable()->getUserRowById($id);
+            $form->bind($formdata);
+        }
+        
+        if(!empty($currentData)) {
         //In order to bind the data it should be always the object, 
         //so the formdata array is converted into user Object.
         $User->exchangeAssetArray($currentData[$count]);
         $form->bind($User);
+        }
         
         $form->get('submit')->setAttribute('value', 'update');
           
@@ -174,6 +185,7 @@ class UserInfoController extends AbstractActionController {
     *
     */
     public function indexAction() {
+
         $form = $this->getServiceLocator()
                      ->get('FormElementManager')
                      ->get('UserInfo\Form\LoginUserForm');   
@@ -255,14 +267,6 @@ class UserInfoController extends AbstractActionController {
         $authService->getStorage()->clear();
         return $this->redirect()->toRoute('login');
     }
-
-    /**
-    *Showing the success msg of the registration.:-
-    */
-    public function regsucessAction() {
-        return new ViewModel();
-    }
-
   
 
     /**
@@ -286,7 +290,8 @@ class UserInfoController extends AbstractActionController {
                 //setting data on Asset object from form odbc_fetch_object
                 $User->exchangeArray($form->getData());
                 $this->getUserInfoTable()->storeUser($User);
-                return $this->redirect()->toRoute('regsucess');
+                $this->flashMessenger()->addMessage('Registration completed Successfully!!');
+                return $this->redirect()->toRoute('login');
             }
         }
         // if it is form request

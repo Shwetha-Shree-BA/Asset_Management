@@ -1,4 +1,18 @@
+<div align="center">
 <h1>Assets List</h1>
+<div>
+<h3>
+<b>
+<?php 
+$datetime = $this->datetime;
+$formatted = $datetime->format("d-m-Y H:i:s");
+
+echo($formatted);
+
+?>
+</b>
+</h3>
+</div>
 <script>
             
             $(document).ready(function(){
@@ -15,6 +29,7 @@
         	});          
 
 </script>
+<body>
 <table border="1">
    	 <thead>
      
@@ -46,20 +61,18 @@
             echo "<tr>";
 
                 $a= $Asset['AssetId'];
-                
-             
                 echo "<td>" .$Asset['AssetName']  . "</td>";
                 echo "<td>" .$Asset['AssetStatus']  . "</td>";
                 echo "<td>" .$Asset['AssetDesc'] . "</td>";
-                echo "<td>" .$Asset['AssetType']. "</td>";
+                echo "<td>" .$Asset['AssetType']."</td>";
     			echo "<td>"."<a href='/asset/update/".$a."'>update</a>"."</td>";
     		 	echo "<td>"."<span id='abcc'> <a href='#' id='delete1' 
     			val='".$a."'>delete</a></span>"."</td>";
-    		
-            echo "</tr>";
+    		echo "</tr>";
 		}
     ?>
 	
 </tbody>
 </table>
-
+</body>
+</div>

@@ -12,26 +12,27 @@ $form->prepare();
 echo $this->form()->openTag($form);
 
 ?>
-<div style = "width:400px; border: solid 1px #333333; " align = "left">
+<div align ="center">
+
+<div style = "width:500px; height:330px; border: solid 1px #333333; " align = "left">
                 <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Users</b></div>
 				        <div style = "margin:30px" id="Users">
 						
 						<p id= "demo"></p>							
 							
-							<div align ="center">
-
+							
 							<?php							
 							// Hidden Element to store id
 							echo $this->formHidden($form->get('Id'));
 							?>
 							<div>
-							<label>firstname: </label>
+							<label>Firstname: </label>
 							<?php 
 							// TextBox element to input Name of Asset.
 							echo $this->formRow($form->get('firstname')); ?>
 							</div>
 							<div>
-							<lable><b>lastname: </b></lable>
+							<lable><b>Lastname: </b></lable>
  							<?php
 							// TextBox element to input Type of Asset.
 							echo $this->formRow($form->get('lastname'));
@@ -39,14 +40,14 @@ echo $this->form()->openTag($form);
 							</div>
 
 							<div>
- 							<lable><b>email: </b></lable>
+ 							<lable><b>EmailAddr: </b></lable>
  							<?php
 							// TextBox element to input AssetDesc of Asset.
 							echo $this->formRow($form->get('email'));
 							?>
 							
 							<div>
- 							<lable><b>password: </b></lable>
+ 							<lable><b>Password: </b></lable>
  							<?php
 							// TextBox element to input AssetDesc of Asset.
 							echo $this->formRow($form->get('password'));
@@ -63,15 +64,16 @@ echo $this->form()->openTag($form);
 							
 							<?php
 							// TextBox element to input status of Asset.
-						echo $this->formRow($form->get('isleasedout'));
+							echo $this->formRow($form->get('isleasedout'));
 							?>
 							</div>
 
 							<div> 
 							
+							<lable><b>Role: </b></lable>
 							<?php
 							// TextBox element to input status of Asset.
-						echo $this->formRow($form->get('roleid'));
+							echo $this->formRow($form->get('roleid'));
 							?>
 							</div>
 

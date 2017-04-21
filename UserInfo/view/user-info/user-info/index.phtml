@@ -6,18 +6,36 @@
 	echo $this->form()->openTag($form);
 ?>
 <div align ="center">
+<!-- <?php //echo $this->flashMessenger()->renderCurrent('success', array('alert', 'alert-success'));?> -->
+<?php
+if ($this->flashMessenger()->hasMessages()) {
+
+	echo '<div class="alert alert-info">';
+
+ 	$messages = $this->flashMessenger()->getMessages();
+  	foreach($messages as $message) {
+        echo $message;
+    }
+
+    echo '</div>';
+
+}
+?>
+
+</div>
+<div align ="center">
 <div style = "width:300px; border: solid 1px #333333; " align = "left">
                 <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>login</b></div>
 				        <div style = "margin:30px" id="login">
 							<div>
-							<label>EmailID: </label>
+							<label>UserName: </label>
 							<?php 
 							// TextBox element to input Name of Asset.
 							echo $this->formRow($form->get('email')); ?>
 							</div>
 							
 							<div>
-							<label>password: </label>
+							<label>Password: </label>
 							<?php 
 							// TextBox element to input Name of Asset.
 							echo $this->formRow($form->get('password')); ?>
@@ -43,7 +61,8 @@
 <?php
 // Closing the form tag
 echo $this->form()->closeTag();
-?>						
+?>	
+					
 
 
 

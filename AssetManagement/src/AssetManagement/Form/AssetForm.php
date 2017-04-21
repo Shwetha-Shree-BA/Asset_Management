@@ -102,9 +102,13 @@ function __construct($name= null,$options, $opt) {
         ),
         
     ));
-
-
-
+//Adding DateTime 
+/*
+    $this->add(array(
+    'name' => 'dateTime',
+    'type' => 'Zend\Form\Element\DateTime',
+));
+*/
 //Adding the Submit button.
 
     $this->add(array(

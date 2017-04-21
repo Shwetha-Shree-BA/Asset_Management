@@ -33,19 +33,20 @@ return array(
                     ),
                 ),
             ),
-
-                'regsucess' => array(
-                'type'    => 'Literal',
+                'sucess' => array(
+                'type'    => 'segment',
                 'options' => array(
-                    'route'    => '/user/regsucess',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'UserInfo\Controller',
-                        'controller'    => 'UserInfo\Controller\UserInfo',
-                        'action'        => 'regsucess',
-                    ),
+                'route'    => '/user/sucess/:email[/]',
+                'constraints' => array(
+                    'email'     => '[a-zA-Z][a-zA-Z0-9_-]+',
                 ),
+                'defaults' => array(
+                    'controller' => 'UserInfo\Controller\UserInfo',
+                    'action' => 'sucess'
                 ),
-                'select' => array(
+            ),
+        ),
+               'select' => array(
                 'type'    => 'Literal',
                 'options' => array(
                     'route'    => '/user/selectuser',
@@ -53,9 +54,11 @@ return array(
                         '__NAMESPACE__' => 'UserInfo\Controller',
                         'controller'    => 'UserInfo\Controller\UserInfo',
                         'action'        => 'select',
+                        ),
                     ),
                 ),
-                ),
+                
+
                 'update' => array(
                 'type'    => 'segment',
                 'options' => array(
